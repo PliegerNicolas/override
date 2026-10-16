@@ -1,6 +1,6 @@
 # OverRide (levelXX)
 
-In this project, we try to **exploit binaries** with the intent of reading the `/home/user/level<n+1>/.pass` file, containing our flag serving as the password for the next level.
+In this project, we try to **exploit binaries** with the intent of reading the `/home/users/level<n+1>/.pass` file, containing our flag serving as the password for the next level.
 
 # Binary
 
