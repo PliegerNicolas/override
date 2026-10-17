@@ -246,7 +246,6 @@ unsigned int    get_unum(void) {
     return unum;
 }
 
-
 /* Function: prog_timeout. Address: 0804864f */
 
 void    prog_timeout(void) {
