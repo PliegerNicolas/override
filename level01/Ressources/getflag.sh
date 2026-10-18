@@ -21,10 +21,10 @@ generate_shellcode() {
     asm_path="$1";
 
     if [ -z "$asm_path" ]; then
-        _log "Error: generate_shellcode requires an assembly source path.";
+        log "Error: generate_shellcode requires an assembly source path.";
         return 1;
     elif [ ! -r "$asm_path" ]; then
-        _log "Error: assembly source '$asm_path' is not readable.";
+        log "Error: assembly source '$asm_path' is not readable.";
         return 1;
     fi
 

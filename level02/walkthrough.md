@@ -76,11 +76,14 @@ On the failure path, `printf(user_name)` uses our buffer as its format string, g
 
 `printf()` is variadic: it trusts the format string for its argument count. We control that string (`user_name`), so each specifier makes it fetch one more argument we never supplied.
 
-On x86-64 (SysV ABI) the first 6 arguments are in registers and the rest on the stack. Our format string is the first, so the walk starts at the 2nd: `%p` reads the 5 remaining registers, then climbs the stack 8 bytes at a time.
+On x86-64 ([SysV ABI](https://wiki.osdev.org/System_V_ABI)) the first 6 arguments are in registers and the rest on the stack. Our format string is the first, so the walk starts at the 2nd: `%p` reads the 5 remaining registers, then climbs the stack 8 bytes at a time.
 
 ## Locating `password` on the stack
 
-The three buffers are contiguous on `main()`'s frame: `user_password` -> `password` -> `user_name`. We put a marker in `user_password` and chain `%p`s in `user_name`; spotting the marker in the leak tells us where the buffers begin, and `password` follows at a fixed offset.
+The three buffers are contiguous on `main()`'s frame:  
+`user_password` -> `password` -> `user_name`.
+
+We put a marker in `user_password` and chain `%p`s in `user_name`. Spotting the marker in the leak tells us where the buffers begin, and `password` follows at a fixed offset.
 
 Each `%p` prints one 8-byte word little-endian, so the marker `AAAABBBBCCCCDDDDEEEEFFFF` comes back byte-swapped per group if everything aligns faithfully: `0x4242424241414141 0x4444444443434343 0x4646464645454545`.
 

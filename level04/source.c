@@ -181,7 +181,7 @@ int main(void) {
     if (pid == 0) {
         /* When the parent of this child process dies, it receives a SIGHUP signal. */
         prctl(PR_SET_PDEATHSIG, SIGHUP);
-        /* Allows the parent to trace this child process. The man page indicates to call raise(SIGSTOP) after it, to prevent race conditions. */
+        /* Allows the parent to trace this child process. The man page indicates to call raise(SIGSTOP) after it, to prevent race conditions. This causes the child to stop on every syscall-entry, waking the parent up. */
         ptrace(PTRACE_TRACEME, 0, 0, 0);
         puts("Give me some shellcode, k");
         /* Allows easy buffer overflows. Depreciated function. */
