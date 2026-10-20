@@ -68,7 +68,7 @@ Reference material for the concepts above:
 
 # Vulnerability & Analysis
 
-The decompiled binary (cf. [source](source.c)) is not subject to any popular CWE vulnerability. It seems to be a simple reverse-engineering exercise.
+The decompiled binary (cf. [source](source.c)) is not subject to any popular CWE vulnerability. Its main weakness is "Reliance on Security Through Obscurity" ([CWE-656](https://cwe.mitre.org/data/definitions/656.html)) position, ideal for pure reverse-engineering exercises.
 
 Ghidra's output is inconsistent. We relied on the assembly code ([source.asm](./source.asm)) and worked out the rest through experimentation and assumptions. Our version probably drifts from the original, but it is good enough, as we do not intend to manipulate the stack.
 

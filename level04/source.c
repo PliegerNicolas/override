@@ -128,11 +128,9 @@
 /* Function: clear_stdin. Address: 08048634 */
 
 void    clear_stdin(void) {
-    char c;
+    char    c;
 
     do {
-        /* getchar() returns an int, but the binary stores only %al: the
-           result is truncated to a char before every comparison. */
         c = getchar();
     } while (c != '\n' && c != EOF);
 }
@@ -154,7 +152,6 @@ unsigned int    get_unum(void) {
 void    prog_timeout(void) {
     exit(1);
 }
-
 
 /* Function: enable_timeout_cons. Address: 080486a0 */
 
