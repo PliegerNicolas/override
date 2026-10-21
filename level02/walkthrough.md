@@ -68,7 +68,7 @@ Reference material for the concepts above:
 
 # Vulnerability & Analysis
 
-The decompiled binary (cf. [source](source.c)) is subject to a "Use of Externally-Controlled Format String" ([CWE-134](https://cwe.mitre.org/data/definitions/134.html)).
+The decompiled binary (cf. [source](source.c)) is subject to a "Use of Externally-Controlled Format String" ([CWE-134](https://cwe.mitre.org/data/definitions/134.html)) vulnerability.
 
 On the failure path, `printf(user_name)` uses our buffer as its format string, giving a read (`%p`, `%s`) and write (`%n`) primitive on the stack. That lets us read the real password straight off the stack.
 

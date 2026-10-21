@@ -68,7 +68,7 @@ Reference material for the concepts above:
 
 # Vulnerability & Analysis
 
-The decompiled binary (cf. [source](source.c)) is subject to a "Use of Inherently Dangerous Function" ([CWE-242](https://cwe.mitre.org/data/definitions/242.html)) due to the call of `gets()`.
+The decompiled binary (cf. [source](source.c)) is subject to a "Use of Inherently Dangerous Function" ([CWE-242](https://cwe.mitre.org/data/definitions/242.html)) vulnerability due to the call of `gets()`.
 
 `gets()` reads unbounded input into a 128-byte stack buffer. The saved return address sits above that buffer, so a long enough input overflows it and lets us redirect execution flow to shellcode we inject into the stack *(no ASLR, no NX, no Canaries...)*.
 

@@ -68,7 +68,7 @@ Reference material for the concepts above:
 
 # Vulnerability & Analysis
 
-The decompiled binary (cf. [source](source.c)) is subject to a "Use of Externally-Controlled Format String" ([CWE-134](https://cwe.mitre.org/data/definitions/134.html)) due to the call of `printf(buffer)`, where `buffer` is our own input passed directly as the format string.
+The decompiled binary (cf. [source](source.c)) is subject to a "Use of Externally-Controlled Format String" ([CWE-134](https://cwe.mitre.org/data/definitions/134.html)) vulnerability due to the call of `printf(buffer)`, where `buffer` is our own input passed directly as the format string.
 
 `fgets()` bounds its read, so no buffer overflow is possible. And `main()` never returns, it leaves through `exit(0)`, so its saved return address is dead anyway.
 

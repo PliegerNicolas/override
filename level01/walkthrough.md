@@ -71,7 +71,7 @@ Reference material for the concepts above:
 
 # Vulnerability & Analysis
 
-The decompiled binary (cf. [source](source.c)) is subject to a "Stack-based Buffer Overflow" ([CWE-121](https://cwe.mitre.org/data/definitions/121.html)).
+The decompiled binary (cf. [source](source.c)) is subject to a "Stack-based Buffer Overflow" ([CWE-121](https://cwe.mitre.org/data/definitions/121.html)) vulnerability.
 
 The username and password are hardcoded and recoverable by static analysis, but providing them grants nothing. The password comparison result is always considered wrong.
 
