@@ -24,7 +24,7 @@ sshid_password() {
     printf '%s' 'level00';
 }
 
-# password_file="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)/../../level00/flag";
+# password_file="$(cd "$(dirname "$0")" && pwd)/../../level00/flag";
 # sshid_password() {
 #     if [ ! -f "$password_file" ]; then
 #         echo "Error: password/flag file not found: '$password_file'." >&2;

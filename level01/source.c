@@ -107,7 +107,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char    a_user_name[256]; // 
+char    a_user_name[256];
 
 /* Function: verify_user_name. Address: 08048464 */
 
