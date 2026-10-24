@@ -68,9 +68,9 @@ Reference material for the concepts above:
 
 # Vulnerability & Analysis
 
-The decompiled binary (cf. [source](source.c)) is subhect to two CWE vulnerabilities:
+The decompiled binary (cf. [source](source.c)) is subject to two CWE vulnerabilities:
 - "Use of Externally-Controlled Format String" ([CWE-134](https://cwe.mitre.org/data/definitions/134.html))
-- "Improper Link Resolution Before File Access ('Link Following')" ([CWE-59](https://cwe.mitre.org/data/definitions/59.html))
+- "Untrusted Search Path" ([CWE-426](https://cwe.mitre.org/data/definitions/426.html))
 
 ## General behaviour
 
