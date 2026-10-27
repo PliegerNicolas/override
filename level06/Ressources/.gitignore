@@ -1,0 +1,8 @@
+*
+!.gitignore
+!*.sh
+!*.md
+!data/
+!data/**
+!decoder/
+!decoder/**
